@@ -18,7 +18,6 @@ package controller
 
 import (
 	"context"
-
 	"k8s.io/apimachinery/pkg/runtime"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
@@ -59,4 +58,11 @@ func (r *ChartPresetReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&chartsv1alpha1.ChartPreset{}).
 		Complete(r)
+}
+
+// SetupWebhookWithManager will setup the manager to manage the webhooks
+func (r *ChartPresetReconciler) SetupWebhookWithManager(mgr ctrl.Manager) error {
+	return ctrl.NewWebhookManagedBy(mgr).
+		For(r).
+		Complete()
 }
