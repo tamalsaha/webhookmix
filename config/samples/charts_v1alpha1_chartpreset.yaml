@@ -1,0 +1,9 @@
+apiVersion: charts.kubedb.dev/v1alpha1
+kind: ChartPreset
+metadata:
+  labels:
+    app.kubernetes.io/name: webhookmix
+    app.kubernetes.io/managed-by: kustomize
+  name: chartpreset-sample
+spec:
+  # TODO(user): Add fields here
